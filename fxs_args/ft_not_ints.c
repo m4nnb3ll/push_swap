@@ -20,8 +20,10 @@ int	ft_not_ints(char **args)
 	i = 0;
 	while (args[i])
 	{
+		if (!ft_strlen(args[i]))
+			ft_show_err();
 		j = 0;
-		if (args[i][j] == '-' && args[i][j + 1])
+		if ((args[i][j] == '-' || args[i][j] == '+') && args[i][j + 1])
 			j++;
 		while (args[i][j])
 		{

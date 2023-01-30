@@ -20,10 +20,15 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		exit(1);
-	if (argc > 2)
-		args = ft_get_stack_from_args(argc, argv);
+	if (argc == 2)
+	{
+		if (ft_strlen(argv[1]))
+			args = ft_split(argv[1], ' ');
+		else
+			return (ft_putstr_fd("Error\n", 2), 1);
+	}
 	else
-		args = ft_split(argv[1], ' ');
+		args = ft_get_stack_from_args(argc, argv);
 	ft_check_error(args, &stk_a);
 	if (!ft_stk_sorted(stk_a))
 		ft_push_swap(&stk_a, &stk_b);
